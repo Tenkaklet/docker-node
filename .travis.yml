@@ -5,3 +5,13 @@ services:
 script:
   - docker build -t maxcarlquist/node .
   - docker images maxcarlquist/node
+
+before_deploy:
+  - docker login -u maxcarlquist -p Aaadktda:docker
+
+deploy:
+  provider: script
+  script: docker push maxcarlquist/node
+  on:
+    branch: master
+ 
